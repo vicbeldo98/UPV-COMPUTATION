@@ -1,0 +1,97 @@
+﻿  Videojuegos.cpp
+c:\users\viki\documents\visual studio 2017\projects\gl\include\utilidades.h(29): warning C4305: 'inicializando': truncamiento de 'double' a 'const GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\gl\include\utilidades.h(30): warning C4305: 'inicializando': truncamiento de 'double' a 'const GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\gl\include\utilidades.h(35): warning C4305: 'inicializando': truncamiento de 'double' a 'const GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\gl\include\utilidades.h(36): warning C4305: 'inicializando': truncamiento de 'double' a 'const GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\gl\include\utilidades.h(38): warning C4305: 'inicializando': truncamiento de 'double' a 'const GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\gl\include\utilidades.h(252): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(26): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(30): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(31): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(32): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(35): warning C4305: 'inicializando': truncamiento de 'double' a 'const GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(92): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(93): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(102): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(103): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(104): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(157): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(159): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(163): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(164): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(178): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(179): warning C4305: '+=': truncamiento de 'double' a 'float'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(187): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(195): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(224): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(225): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(231): warning C4838: la conversión de 'double' en 'GLfloat' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(231): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(235): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(237): warning C4838: la conversión de 'double' en 'float' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(237): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(238): warning C4838: la conversión de 'double' en 'float' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(238): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(239): warning C4838: la conversión de 'double' en 'float' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(239): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(240): warning C4838: la conversión de 'double' en 'float' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(240): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(253): warning C4838: la conversión de 'double' en 'float' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(253): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(254): warning C4838: la conversión de 'double' en 'float' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(254): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(255): warning C4838: la conversión de 'double' en 'float' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(255): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(256): warning C4838: la conversión de 'double' en 'float' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(256): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(272): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(272): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(274): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(275): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(325): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(326): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(331): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(332): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(339): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(340): warning C4305: 'inicializando': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(350): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(351): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(356): warning C4838: la conversión de 'int' en 'GLfloat' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(356): warning C4244: 'inicializando': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(357): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(358): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(363): warning C4838: la conversión de 'int' en 'GLfloat' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(363): warning C4244: 'inicializando': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(364): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(365): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(370): warning C4838: la conversión de 'int' en 'GLfloat' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(370): warning C4244: 'inicializando': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(371): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(372): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(377): warning C4838: la conversión de 'int' en 'GLfloat' requiere una conversión de restricción
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(377): warning C4244: 'inicializando': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(379): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(386): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(392): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(398): warning C4244: '+=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(416): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(475): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(501): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(502): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(504): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(524): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(525): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(526): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(527): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(568): warning C4305: '+=': truncamiento de 'double' a 'float'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(576): warning C4305: '-=': truncamiento de 'double' a 'float'
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(617): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(618): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(619): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\viki\documents\visual studio 2017\projects\practica1\videojuego\videojuegos.cpp(627): warning C4326: el tipo de valor devuelto de 'main' debe ser 'int' en lugar de 'void'
+  Generando código
+  4 of 132 functions ( 3.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+  Videojuego.vcxproj -> C:\Users\Viki\Documents\Visual Studio 2017\Projects\Practica1\Videojuego\Videojuego.exe
