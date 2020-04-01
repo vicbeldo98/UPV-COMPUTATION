@@ -1,0 +1,591 @@
+CINEMA DATABASE
+
+	3.1 Queries using one single relation
+		
+	1->select distinct cod_pais from cs_actor order by cod_pais;
+	2->select distinct cod_peli,titulo from cs_pelicula where anyo<1970 and cod_lib is null order by titulo;
+	3->select distinct cod_act,nombre from cs_actor where nombre like '%John%';
+	4->select distinct cod_peli,titulo from cs_pelicula where duracion>120 and anyo between 1980 and 1989;
+	5->select cod_peli,titulo from cs_pelicula where cod_lib is not null and director like '%Pakula';
+	6->select COUNT(*) from cs_pelicula where duracion>120 and anyo between 1980 and 1989 
+	7->select COUNT(distinct cod_peli) from cs_clasificacion where cod_gen = 'BB5' or cod_gen='GG4' or cod_gen='JH6';
+	8->select min(anyo) from cs_libro;
+	9->select avg(duracion) from cs_pelicula where anyo=1987;
+	10->select sum(duracion) from cs_pelicula where director='Steven Spielberg';
+
+    3.2 Queries using more than one relation
+    
+    11->select distinct P.cod_peli, P.titulo from cs_pelicula P,cs_actua Act,cs_actor Actor where P.director=Actor.nombre and Act.cod_peli=P.cod_peli and Act.cod_act=Actor.cod_act order by titulo;
+    12->select P.cod_peli,P.titulo from cs_pelicula P,cs_clasificacion C, cs_genero G where P.cod_peli=C.cod_peli and C.cod_gen=G.cod_gen and G.nombre='Comedia' order by titulo; 
+    13->select P.cod_peli,P.titulo from cs_pelicula P,cs_libro L where L.anyo<1950 and P.cod_lib=L.cod_lib order by P.titulo;
+    14->select distinct Pais.cod_pais,Pais.nombre from cs_pais Pais,cs_actor A,cs_actua Act,cs_pelicula P,cs_clasificacion C,cs_genero G 
+    where G.nombre='Comedia' and G.cod_gen=C.cod_gen and P.cod_peli=C.cod_peli and Act.cod_peli=P.cod_peli and A.cod_act= Act.cod_act and Pais.cod_pais=A.cod_pais order by Pais.nombre;
+    
+    3.3 Queries with subqueries
+    
+   
+    11->
+    select p.cod_peli,p.titulo 
+    from cs_pelicula p 
+    where p.director in 
+            (select a.nombre from cs_actor a,cs_actua act where a.cod_act=act.cod_act and p.cod_peli=act.cod_peli) order by p.titulo;
+    
+    12->
+    select p.cod_peli,p.titulo 
+    from cs_pelicula p 
+    where p.cod_peli in 
+            (select c.cod_peli from cs_genero g,cs_clasificacion c where g.nombre='Comedia' and g.cod_gen=c.cod_gen) order by p.titulo;
+    
+    13->
+    select p.cod_peli,p.titulo
+    from cs_pelicula p
+    where cod_lib in 
+        (select l.cod_lib from cs_libro l where l.anyo<1950) order by (p.titulo);
+    
+    14->
+    select p.cod_pais,p.nombre 
+    from cs_pais p
+    where p.cod_pais in
+    (select a.cod_pais
+    from cs_actor a,cs_actua act,cs_pelicula peli,cs_clasificacion c,cs_genero g
+    where p.cod_pais=a.cod_pais and a.cod_act=act.cod_act and act.cod_peli=peli.cod_peli and c.cod_peli=peli.cod_peli and c.cod_gen=g.cod_gen and g.nombre='Comedia')order by(p.nombre);
+    
+    16->
+    select a.cod_act,a.nombre 
+    from cs_actor a 
+    where extract(year from a.fecha_nac)<1950 and a.cod_act in
+        (select act.cod_act from cs_actua act where papel='Principal')order by a.nombre;
+    
+    17->
+    select l.COD_LIB,l.TITULO,l.AUTOR from cs_libro l where cod_lib in 
+    (select p.cod_lib from cs_pelicula p where anyo>=1990 and anyo<=1999 and p.cod_lib is not null)
+    order by l.titulo;
+    
+    
+    18->
+    select l.cod_lib,l.titulo,l.autor
+    from cs_libro l
+    where l.cod_lib not in (select p.cod_lib from cs_pelicula p where p.cod_lib is not null);
+    
+    19->
+    select distinct nombre from cs_genero where cod_gen in(
+    select c.cod_gen 
+    from cs_clasificacion c,cs_pelicula p 
+    where c.cod_peli=p.cod_peli 
+    and p.cod_peli not in(
+    select cod_peli from cs_actua 
+    ))order by nombre;
+    
+    20->
+    select titulo 
+    from cs_libro 
+    where cod_lib not in
+    (select p.cod_lib 
+    from cs_pelicula p,cs_actua act, cs_actor a 
+    where p.cod_lib is not null and p.cod_peli=act.cod_peli and act.cod_act=a.cod_act and a.cod_pais in
+        (select cod_pais from cs_pais where nombre='USA')
+    )
+    and cod_lib in (select p.cod_lib from cs_pelicula p) order by titulo;
+    
+    21->
+    select count(*) 
+    from cs_pelicula peli 
+    where peli.cod_peli in
+        (select p.cod_peli 
+        from cs_pelicula p, cs_clasificacion c, cs_genero g
+        where g.nombre='Comedia' and g.cod_gen=c.cod_gen and c.cod_peli=p.cod_peli)
+    and 1=(select count(*) 
+           from cs_actua act 
+           where peli.cod_peli=act.cod_peli);
+    22->
+    select min(p.anyo) 
+    from cs_pelicula p 
+    where p.cod_peli in
+        (select act.cod_peli 
+        from cs_actua act,cs_actor a 
+        where act.cod_act=a.cod_act and act.papel='Principal' and a.nombre='Jude Law');
+        
+    23->
+    select cod_act,nombre 
+    from cs_actor 
+    where (extract(year from fecha_nac))=
+            (select min(extract(year from fecha_nac)) from cs_actor);
+
+    24->
+    select act.cod_act,act.nombre,act.fecha_nac from cs_actor act where
+    act.fecha_nac=
+        (select min(fecha_nac) from cs_actor where fecha_nac between '01/01/1940' and '31/12/1940');
+               
+
+    25->
+    select g.nombre 
+    from cs_genero g,cs_clasificacion c 
+    where g.cod_gen=c.cod_gen and c.cod_peli in
+        (select cod_peli from cs_pelicula 
+        where duracion=(select max(duracion) 
+                        from cs_pelicula)
+        );
+        
+    26->select l.cod_lib,l.titulo 
+    from cs_libro l 
+    where l.cod_lib in(
+    select p.cod_lib from cs_pelicula p,cs_actua act,cs_actor a,cs_pais pais
+    where p.cod_peli=act.cod_peli and act.cod_act=a.cod_act and a.cod_pais=pais.cod_pais and pais.nombre='España'
+                      ) order by l.titulo;
+                      
+    27->
+    select p.titulo 
+    from cs_pelicula p 
+    where p.anyo<1950 and 1< (select count(*) from cs_clasificacion c where p.cod_peli=c.cod_peli)
+    order by p.titulo;
+    
+    28->
+    select count(p.cod_peli) from cs_pelicula p where 4>
+    (select count(a.cod_act) from cs_actua a where p.cod_peli=a.cod_peli);
+    
+    29->
+    select distinct p.director 
+    from cs_pelicula p 
+    where 250<(select sum(peli.duracion) from cs_pelicula peli where peli.director=p.director)
+    
+    30->
+    select distinct extract(year from a.fecha_nac) from cs_actor a where
+    3< (select count(mim.cod_act)from cs_actor mim where
+    extract(year from a.fecha_nac)=extract(year from mim.fecha_nac));
+    
+    31->
+    select a.cod_act,a.nombre from cs_actor a where
+    a.fecha_nac = 
+    (select max(a2.fecha_nac) 
+    from cs_clasificacion c, cs_pelicula p ,cs_actua act,cs_actor a2
+    where a2.cod_act=act.cod_act and act.cod_peli=p.cod_peli and p.cod_peli=c.cod_peli and c.cod_gen='DD8');
+    
+    
+    3.4 Queries with universal quantification
+    
+    32->
+    select pais.cod_pais,pais.nombre 
+    from cs_pais pais
+    where NOT EXISTS(SELECT *
+                FROM CS_ACTOR A
+                WHERE pais.cod_pais=a.cod_pais and extract(year from a.fecha_nac)
+                not between 1900 and 1999)
+    and exists(select * from cs_actor a where pais.cod_pais=a.cod_pais) order by pais.nombre;
+    
+    33->
+    select a.cod_act,a.nombre
+    from cs_actor a
+    where not exists (select * from cs_actua act where a.cod_act=act.cod_act and act.papel<>'Secundario')
+    and  exists (select * from cs_actua act where a.cod_act=act.cod_act) order by a.nombre;
+    
+    34->
+    
+    select a.cod_act,a.nombre from cs_actor a
+    where not exists(
+    select * from cs_pelicula p
+    where p.director='Guy Ritchie' and a.cod_act not in 
+    (select act.cod_act from cs_actua act where act.cod_peli=p.cod_peli)
+    )
+    and exists(select * from cs_pelicula where director='Guy Ritchie');
+    
+    35->
+    
+    select a.cod_act,a.nombre from cs_actor a
+    where not exists(
+    select * 
+    from cs_pelicula p
+    where p.director='John Steel' and a.cod_act not in 
+    (select act.cod_act from cs_actua act where act.cod_peli=p.cod_peli)
+    )
+    and exists(select * from cs_pelicula where director='John Steel');
+    
+    36->
+    /*Does nos exist an actor acting in the movie which is not from the same country*/
+    select p.cod_peli,p.titulo from  cs_pelicula p
+    where p.duracion<100 and not exists(select * from cs_actor a,cs_actor b where a.cod_act in
+    (select act1.cod_act 
+    from cs_actua act1, cs_actua act2
+    where p.cod_peli=act1.cod_peli and act1.cod_act=a.cod_act and
+    p.cod_peli=act2.cod_peli and act2.cod_act=b.cod_act and a.cod_pais<>b.cod_pais)
+    )
+    and exists(select act.cod_act from cs_actua act where p.cod_peli=act.cod_peli);
+    
+    37->
+    select distinct p.cod_peli,p.titulo,p.anyo from cs_pelicula p,cs_actua act,cs_actor a where 
+    p.cod_peli=act.cod_peli and act.cod_act=a.cod_act and not exists(select * from cs_actor a,cs_actor b where a.cod_act in
+    (select act.cod_act 
+    from cs_actua act
+    where p.cod_peli=act.cod_peli and act.cod_act=a.cod_act and extract(year from(a.fecha_nac))>=1943)
+    )
+    and exists(select * from cs_actor a,cs_actor b where a.cod_act in
+    (select act.cod_act 
+    from cs_actua act
+    where p.cod_peli=act.cod_peli and act.cod_act=a.cod_act)) order by p.titulo;
+    
+    38->
+    /*List the code and name of the countries if all the actors from that country have acted in at least one
+    movie with a length greater than 120 minutes (sorted by name).
+
+    not exists an actor from that country that has not acted in a movie with lenght>120
+    */
+
+    select cod_pais,nombre from cs_pais pais where not exists(
+        /*hasta aquí tengo los actores que no han participado en una peli de esas características*/
+    select cod_act from cs_actor a1 where a1.cod_pais=pais.cod_pais and  a1.cod_act not in (
+    select a.cod_act from cs_actua act,cs_pelicula peli,cs_actor a where peli.duracion>120 
+    and peli.cod_peli=act.cod_peli and act.cod_act=a.cod_act
+     )
+    )
+    and exists(select * from cs_actor a1,cs_actua act where a1.cod_pais=pais.cod_pais and a1.cod_act=act.cod_act )order by nombre;
+
+3.5 Queries with GROUP BY
+
+    39->
+    /*List the code and title of the book (or books) used in more than one movie. Include also how many movies
+        have been based on that book.*/
+        
+        select l.cod_lib,l.titulo,count(peli.cod_peli)
+        from cs_libro l,cs_pelicula peli
+        where peli.cod_lib=l.cod_lib
+        group by l.cod_lib,l.titulo
+        having 1<(select count(cod_peli) from cs_pelicula peli where peli.cod_lib=l.cod_lib);
+        
+    40->
+    /*. List for each genre with more than 5 movies, the code and the name of the genre, including the amount
+    of movies of that genre and the average length of all that movies. (sorted by name). You can use the
+    ROUND function.*/
+    select gen.cod_gen, gen.nombre,count(peli.cod_peli),round(avg(peli.duracion))
+    from cs_pelicula peli , cs_clasificacion clasi, cs_genero gen
+    where gen.cod_gen=clasi.cod_gen and clasi.cod_peli=peli.cod_peli
+    group by gen.cod_gen, gen.nombre
+    having count(*)>5
+    order by gen.nombre
+    
+    
+    41->
+    select p.cod_peli, p.titulo,count(c.cod_gen)
+    from cs_pelicula p,cs_clasificacion c, cs_genero g
+    where p.cod_peli=c.cod_peli and c.cod_gen =g.cod_gen 
+        and 
+        anyo>2000
+    group by p.cod_peli,p.titulo
+    order by p.titulo;
+    
+    42->
+    select p1.director
+    from cs_pelicula p1
+    where 2=(select count(*) from cs_pelicula p2 where p1.director=p2.director)
+    group by p1.director
+    having  p1.director like '%George%';
+    
+    43->
+    select p.cod_peli,p.titulo,count(act.cod_act)
+    from cs_pelicula p,cs_actua act
+    where p.cod_peli=act.cod_peli and 
+        1=(select count(*) from cs_clasificacion c 
+        where p.cod_peli=c.cod_peli)
+    group by p.cod_peli,p.titulo
+    order by p.titulo;
+        
+    44->
+    /*List the code and name of all the countries with actors, indicating how many actors from 
+    that country have acted in at least one movie from the 60’s.*/
+    2
+    select pais.cod_pais, pais.nombre,count(distinct act.cod_act)
+    from cs_actor a, cs_pais pais, cs_actua act, cs_pelicula p
+    where a.cod_act=act.cod_act and act.cod_peli=p.cod_peli and 
+    p.anyo>=1960 and p.anyo<1970 and a.cod_pais=pais.cod_pais
+    group by pais.cod_pais,pais.nombre
+    order by pais.nombre;
+    
+    45->
+    select distinct g.cod_gen,g.nombre
+    from cs_genero g, cs_clasificacion c
+    where g.cod_gen=c.cod_gen
+    and (select max(count(g2.cod_gen))
+    from cs_clasificacion c,cs_genero g2 
+    where g2.cod_gen=c.cod_gen
+    group by g2.cod_gen,g2.nombre)= (select count(g.nombre)
+    from cs_clasificacion c1 where g.cod_gen=c1.cod_gen);
+    group by g.cod_gen,g.nombre;
+    
+    46->
+    select l.cod_lib,l.titulo
+    from cs_libro l
+    where (select max(count(p.cod_peli)) from cs_pelicula p,cs_libro l1
+            where p.cod_lib=l1.cod_lib group by l1.cod_lib)
+    = 
+    (select count(p.cod_peli) from cs_pelicula p where p.cod_lib=l.cod_lib);
+
+    
+    47->
+    select p.cod_pais,p.nombre
+    from cs_pais p
+    where
+    (select max(count(a1.cod_act))
+    from cs_actor a1,cs_pais pais
+    where a1.cod_pais=pais.cod_pais and 2=(select count(*) from cs_actua act1 where a1.cod_act=act1.cod_act)
+    group by pais.nombre)
+    =
+    (select count(a1.cod_act)
+    from cs_actor a1
+    where a1.cod_pais=p.cod_pais and 2=(select count(*) from cs_actua act1 where a1.cod_act=act1.cod_act))
+
+    
+    48->
+    select extract(year from a.fecha_nac),count(*)
+    from cs_actor a
+    where 3<(select count(a.cod_act) from cs_actor a1 where extract(year from a1.fecha_nac)=extract(year from a.fecha_nac) )
+    group by extract(year from a.fecha_nac);
+    
+    49->
+    select p.cod_peli,p.titulo
+    from cs_pelicula p 
+    where p.duracion<100
+    and 1=(select max(count(distinct a.cod_pais)) from cs_actor a,cs_actua act 
+    where a.cod_act=act.cod_act and act.cod_peli=p.cod_peli
+    group by p.cod_peli)
+    order by p.titulo;
+
+3.6 Queries with different joins
+
+    50->
+    select distinct p.cod_pais,p.nombre,count(a.cod_act)
+    from cs_pais p left join cs_actor a on a.cod_pais=p.cod_pais
+    group by p.cod_pais,p.nombre
+    order by p.nombre;
+    
+    51->
+    select l.cod_lib,l.titulo,count(p.cod_lib)
+    from cs_libro l left join cs_pelicula p on(l.cod_lib=p.cod_lib)
+    where l.anyo>1980
+    group by l.cod_lib,l.titulo;
+    
+    52->
+    select distinct p.cod_pais,p.nombre,count(mim.cod_act)
+    from cs_pais p left join 
+    (select distinct a1.cod_pais,a1.nombre,a1.cod_act from cs_actua act,cs_actor a1 
+    where a1.cod_act=act.cod_act and act.papel='Secundario') mim
+    on mim.cod_pais=p.cod_pais
+    group by p.cod_pais,p.nombre
+    order by p.nombre;
+
+    
+    53->
+    select a.cod_peli,a.titulo,count(distinct b.cod_gen),count(distinct a.cod_act)
+    from 
+    (select p.cod_peli,p.titulo,act.cod_act
+    from cs_pelicula p left join cs_actua act on p.cod_peli=act.cod_peli) a
+    left join
+    (select p.cod_peli,p.duracion,c.cod_gen
+    from cs_pelicula p left join cs_clasificacion c on p.cod_peli=c.cod_peli) b
+    on a.cod_peli=b.cod_peli
+    where b.duracion>140
+    group by a.cod_peli,a.titulo
+    order by a.titulo;
+    
+3.7 Queries with set operations
+
+    54->
+    (select anyo from cs_libro where anyo not like '%9%')
+    union
+    (select anyo from cs_pelicula where anyo not like '%9%') order by anyo;
+    
+3.8 Other queries
+
+    55->
+    select g.nombre from cs_pelicula p,cs_clasificacion c,cs_genero g
+    where p.duracion=
+    (select max(p.duracion)
+    from cs_pelicula p) and c.cod_peli=p.cod_peli and g.cod_gen=c.cod_gen;
+    
+    56->
+    select a.cod_act,a.nombre,a.fecha_nac,count(act.cod_act)
+    from cs_actor a left join(select act.cod_act from cs_actua act where act.papel='Principal') act
+    on a.cod_act=act.cod_act
+    where extract(year from a.fecha_nac)<1948 and
+    2<=(select count(a.cod_act)from cs_actua act2 where a.cod_act=act2.cod_act)
+    group by a.cod_act,a.nombre,a.fecha_nac
+    order by a.nombre;
+    
+
+    
+MUSICA DATABASE
+
+    5.1 Queries using one single relation
+
+    1->SELECT COUNT(*) from disco;
+    2->SELECT nombre from grupo where pais not like '%España';
+    3->select titulo from cancion where duracion>5;
+    4->select distinct(funcion) from pertenece order by funcion;
+    5->select nombre, num from club order by num;
+    6->select nombre,sede from club where num>500;
+
+    5.2 Queries using more than one relation
+    
+    7->select C.nombre,c.sede, G.nombre from club C, grupo G 
+    where G.pais ='España' and C.cod_gru=G.cod;
+    8->select a.nombre from artista a,grupo g, pertenece p 
+    where a.dni=p.dni and p.cod=g.cod and g.pais='España' order by a.nombre;
+    9->select distinct d.nombre from disco d,esta e,cancion c 
+    where d.cod=e.cod and e.can=c.cod and c.duracion>5 order by d.nombre;
+    10->select c.titulo from disco d,esta e, cancion c 
+    where d.cod=e.cod and e.can=c.cod and c.titulo=d.nombre order by c.titulo;
+    11->select c.nombre, c.dir from companyia c , disco d 
+    where c.cod=d.cod_comp and d.nombre like 'A%';
+    12->select distinct a.dni from artista a, pertenece p, pertenece p2, grupo g 
+    where a.dni=p.dni and a.dni=p2.dni and p2.cod=g.cod and p2.cod<>p.cod;
+    
+    5.3 Queries with subqueries
+    
+    13->
+    select d.nombre from disco d where d.cod_gru =
+    (select cod from grupo where fecha=(select min(fecha) from grupo));
+    
+    14->
+    select d.nombre from disco d where d.cod_gru in 
+    (select cod from grupo where cod in
+    (select cod_gru from club where num>5000));
+    
+    15->
+    select c.nombre,c.num from club c,grupo g where g.cod=
+    (select cod_gru from club where num=(select max(num) from club))
+    and g.cod=c.cod_gru and c.num=(select max(num) from club);
+    
+    16->
+    select titulo,duracion from cancion where duracion=(select max(duracion) from cancion);
+
+    
+BIBLIOTECA DATABASE
+
+    7.1 Queries using one single relation
+    
+    1->select nombre from autor where nacionalidad='Argentina';
+    2->select titulo from obra where titulo is not null and titulo like '%mundo%';
+    3->select id_lib, num_obras from libro where año<1990 and num_obras>1;
+    4->select count(*) as LIB_AÑO from libro where año is not null;
+    5->select count(*) as más_1_ob from libro where num_obras>1;
+    6->select id_lib from libro where "AÑO"=1997 and titulo is null;
+    7->select titulo from libro where titulo is not null order by titulo desc;
+    8->select sum(num_obras) as obras from libro where año>=1990 and año<=1999;
+    
+    7.2 Queries using more than one relation
+    
+    9->select count(distinct a.autor_id) from autor a,obra o, escribir e 
+    where a.autor_id=e.autor_id and e.cod_ob=o.cod_ob and o.titulo like '%ciudad%';
+    10->select o.titulo from autor a,obra o, escribir e 
+    where a.autor_id=e.autor_id and e.cod_ob=o.cod_ob and a.nombre='Camús, Albert';
+    11->select a.nombre from autor a,obra o, escribir e 
+    where a.autor_id=e.autor_id and e.cod_ob=o.cod_ob and o.titulo='La tata';
+    12->select distinct am.nombre from escribir e, obra o , leer l , amigo am 
+    where autor_id='RUKI' and e.cod_ob=o.cod_ob and l.cod_ob=o.cod_ob and am.num=l.num;
+    13->select distinct l.id_lib, l.titulo from libro l, esta_en e,esta_en e2 ,obra o 
+    where l.titulo is not null and l.id_lib=e.id_lib and l.id_lib=e2.id_lib and e.cod_ob<>e2.cod_ob;
+    
+    7.3 Queries with subqueries
+    
+    14->
+    select o.titulo,a.nombre 
+    from autor a,escribir e,obra o where
+    a.autor_id=e.autor_id and a.nacionalidad='Francesa' and e.cod_ob=o.cod_ob and 
+    1 = (select count(autor_id)from escribir e2 where e2.cod_ob=e.cod_ob ); 
+    
+    15->
+    select count(autor_id) 
+    from autor  
+    where autor_id not in (select autor_id from escribir);
+
+    16->
+    select nombre
+    from autor  
+    where autor_id not in (select autor_id from escribir);
+    
+    17->
+    select distinct a.nombre 
+    from autor a,escribir e,obra o where
+    a.autor_id=e.autor_id and a.nacionalidad='Española' and e.cod_ob=o.cod_ob and 
+    2 <= (select count(cod_ob)from escribir e2 where e2.autor_id=e.autor_id ); 
+    
+    
+    18->
+    select distinct a.nombre 
+    from autor a,escribir e,obra o where
+    a.autor_id=e.autor_id and a.nacionalidad='Española' and e.cod_ob=o.cod_ob and 
+    2 <= 
+    (select count(re.id_lib) from esta_en re where 
+    re.cod_ob=o.cod_ob);
+    
+    19->
+    select distinct e.cod_ob,o.titulo
+    from autor a,escribir e,obra o where
+    a.autor_id=e.autor_id and e.cod_ob=o.cod_ob and 
+    1 < (select count(autor_id)from escribir e2 where e2.cod_ob=e.cod_ob ); 
+
+    
+DEPARTAMENTO DATABASE
+
+	
+CYCLING DATABASE
+
+	11.1 Queries using one single relation
+    
+	1->SELECT * from jersey;
+	2->select cnum,name from cyclist where age<=25;
+	3->select climbname,height from climb where category='E';
+	4->select stagenum from stage where departure=arrival;
+	5->select COUNT(cnum)as cyclists from cyclist;
+	6->select COUNT(*) from cyclist where age>25;
+	7->select COUNT(*) from team;
+	8->select avg(age) from cyclist;
+	9->select min(height), max(height) from climb;
+    
+    11.2 Queries using more than one relation
+    
+    10->select C.climbname,C.category 
+    from climb C,cyclist Cy 
+    where Cy.teamname='Banesto' and C.cnum=Cy.cnum and Cy.teamname is not null;
+    11->select C.climbname,C.stagenum,S.km from climb C, stage s
+    where C.stagenum=S.stagenum;
+    12->select distinct T.teamname, T.director from team T, cyclist C 
+    where C.teamname=T.teamname and C.age>33 order by T.teamname;
+    13->select distinct C.NAME, j.color from cyclist C,wear W,jersey J 
+    where C.cnum=W.cnum and W.code=J.code order by name;
+    14->select distinct c.NAME,s.stagenum from stage s,cyclist c,wear w, jersey j 
+    where c.cnum=s.cnum and w.cnum=c.cnum and w.code=j.code and j.color='Amarillo';
+    15->select s.stagenum from stage s, stage st 
+    where s.departure<>st.arrival and st.stagenum=s.stagenum-1;
+    
+    11.3 Queries with subqueries
+    
+    16->
+    select stagenum,departure 
+    from stage 
+    where stagenum not in (select stagenum from climb);
+    
+    17->
+    select avg(age) from cyclist where cnum in (select cnum from stage );
+    
+    18->
+    select climbname from climb where
+    height >= (select avg(height) from climb);
+    
+    19->
+    select departure,arrival from stage where stagenum in(
+    select stagenum from climb where slope in (select max(slope) from climb));
+
+    20->
+    select cnum,name from cyclist where cnum in(
+    select cnum from climb where height=
+    (select max(height) from climb));
+    
+    21->
+    select name from cyclist where age = (select(min(age)) from cyclist);
+
+    22->
+    select name from cyclist where
+    age=
+    (select min(age) from cyclist c where cnum in(select cnum from stage))
+    and cnum in (select cnum from stage);
+    
+    23->
+    select cy.name from cyclist cy where 1<(select count(cl.climbname) from climb cl where cl.cnum=cy.cnum);
