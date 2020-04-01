@@ -1,0 +1,7 @@
+Sequential time: 5,96
+
+Parallel versions execution time: 
+				Version 1	Version 2	Version 3	Version 4
+	2 threads	8,45		6,93
+	8 threads
+	32 threads	

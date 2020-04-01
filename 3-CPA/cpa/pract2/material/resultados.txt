@@ -1,0 +1,6 @@
+all kahan
+
+simil 1: 105,920086s
+
+simil 3: 6,186552
+simil 4: 6,354521
