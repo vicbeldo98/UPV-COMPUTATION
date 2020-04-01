@@ -1,0 +1,209 @@
+alexander     18
+iluminación     17
+capital     248
+secuela     5
+asoman     4
+virgen     44
+permisos     13
+libertad     119
+sagrado     11
+apertura     78
+lourdes     2
+cuatro     535
+planeta     106
+
+alexander%1     19
+iluminación%1     17
+capital%1     251
+secuela%1     20
+asoman%1     15
+virgen%1     46
+permisos%1     51
+libertad%1     120
+sagrado%1     39
+apertura%1     88
+lourdes%1     2
+cuatro%1     557
+planeta%1     188
+
+alexander%2     28
+iluminación%2     41
+capital%2     354
+secuela%2     138
+asoman%2     180
+virgen%2     340
+permisos%2     86
+libertad%2     199
+sagrado%2     318
+apertura%2     154
+lourdes%2     10
+cuatro%2     1636
+planeta%2     415
+
+alexander%3     176
+iluminación%3     126
+capital%3     1318
+secuela%3     1256
+asoman%3     1986
+virgen%3     1901
+permisos%3     1013
+libertad%3     513
+sagrado%3     1792
+apertura%3     763
+lourdes%3     881
+cuatro%3     2216
+planeta%3     1469
+
+alexander%5     2139
+iluminación%5     1725
+capital%5     2314
+secuela%5     2314
+asoman%5     2314
+virgen%5     2314
+permisos%5     2314
+libertad%5     2312
+sagrado%5     2314
+apertura%5     2314
+lourdes%5     2314
+cuatro%5     2314
+planeta%5     2314
+
+alexander@1     24
+iluminación@1     17
+capital@1     251
+secuela@1     107
+asoman@1     15
+virgen@1     46
+permisos@1     51
+libertad@1     120
+sagrado@1     39
+apertura@1     88
+lourdes@1     2
+cuatro@1     619
+planeta@1     226
+
+alexander@2     29
+iluminación@2     48
+capital@2     368
+secuela@2     160
+asoman@2     185
+virgen@2     485
+permisos@2     156
+libertad@2     204
+sagrado@2     333
+apertura@2     155
+lourdes@2     151
+cuatro@2     1653
+planeta@2     471
+
+alexander@3     176
+iluminación@3     126
+capital@3     1322
+secuela@3     1287
+asoman@3     1992
+virgen@3     1905
+permisos@3     1161
+libertad@3     607
+sagrado@3     1802
+apertura@3     772
+lourdes@3     881
+cuatro@3     2227
+planeta@3     1478
+
+alexander@5     2139
+iluminación@5     1725
+capital@5     2314
+secuela@5     2314
+asoman@5     2314
+virgen@5     2314
+permisos@5     2314
+libertad@5     2312
+sagrado@5     2314
+apertura@5     2314
+lourdes@5     2314
+cuatro@5     2314
+planeta@5     2314
+
+not antihéroes and ecuador     31
+blindarse or árboles and perjuicio     1
+orígenes and aversión     0
+actualmente and not reubicar     175
+ventanasse or rebuscar     1
+tortuosa or atardecer     10
+not alexander and iluminación     16
+capital or secuela and asoman     0
+virgen and permisos     0
+libertad and not sagrado     117
+apertura or lourdes     80
+
+not antihéroes%2 and ecuador%2     49
+blindarse%2 or árboles and perjuicio#2     0
+orígenes%2 and aversión%2     10
+actualmente%2 and not reubicar%2     193
+ventanasse%2 or rebuscar%2     146
+tortuosa%2 or atardecer%2     66
+not alexander%2 and iluminación%2     39
+capital or secuela%2 and asoman%2     32
+virgen%2 and permisos%2     18
+libertad%2 and not sagrado%2     154
+apertura%2 or lourdes%2     163
+
+not antihéroes%3 and ecuador%3     1624
+blindarse%3 or árboles and perjuicio#2     0
+orígenes%3 and aversión%3     190
+actualmente%3 and not reubicar%3     332
+ventanasse%3 or rebuscar%3     625
+tortuosa%3 or atardecer%3     431
+not alexander%3 and iluminación%3     114
+capital or secuela%3 and asoman%3     1212
+virgen%3 and permisos%3     893
+libertad%3 and not sagrado%3     87
+apertura%3 or lourdes%3     1296
+
+not antihéroes%5 and ecuador%5     1115
+blindarse%5 or árboles and perjuicio#2     0
+orígenes%5 and aversión%5     2299
+actualmente%5 and not reubicar%5     0
+ventanasse%5 or rebuscar%5     2309
+tortuosa%5 or atardecer%5     2314
+not alexander%5 and iluminación%5     92
+capital or secuela%5 and asoman%5     2314
+virgen%5 and permisos%5     2314
+libertad%5 and not sagrado%5     0
+apertura%5 or lourdes%5     2314
+
+not antihéroes@2 and ecuador@2     80
+blindarse@2 or árboles and perjuicio#2     0
+orígenes@2 and aversión@2     10
+actualmente@2 and not reubicar@2     196
+ventanasse@2 or rebuscar@2     151
+tortuosa@2 or atardecer@2     93
+not alexander@2 and iluminación@2     46
+capital or secuela@2 and asoman@2     36
+virgen@2 and permisos@2     44
+libertad@2 and not sagrado@2     159
+apertura@2 or lourdes@2     290
+
+not antihéroes@3 and ecuador@3     1756
+blindarse@3 or árboles and perjuicio#2     0
+orígenes@3 and aversión@3     202
+actualmente@3 and not reubicar@3     329
+ventanasse@3 or rebuscar@3     625
+tortuosa@3 or atardecer@3     443
+not alexander@3 and iluminación@3     114
+capital or secuela@3 and asoman@3     1239
+virgen@3 and permisos@3     1015
+libertad@3 and not sagrado@3     103
+apertura@3 or lourdes@3     1301
+
+not antihéroes@5 and ecuador@5     1081
+blindarse@5 or árboles and perjuicio#2     0
+orígenes@5 and aversión@5     2299
+actualmente@5 and not reubicar@5     0
+ventanasse@5 or rebuscar@5     2310
+tortuosa@5 or atardecer@5     2314
+not alexander@5 and iluminación@5     92
+capital or secuela@5 and asoman@5     2314
+virgen@5 and permisos@5     2314
+libertad@5 and not sagrado@5     0
+apertura@5 or lourdes@5     2314
